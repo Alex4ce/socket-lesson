@@ -13,12 +13,12 @@ const userIds = [];
 let count = 0
 let flag = false;
 io.on('connection', (socket) => {
-    if(!count) flag = true
     userIds.push(socket.id);
     socket.broadcast.emit('new user', socket.id)
     socket.on('privateMessage', id => {
         io.to(id).emit('message', 'ПИШУ В ЛИЧКУ')
     })
+    console.log('sasas')
     // console.log('a user connected');
     // socket.emit("message", {text: "Welcome", chatId: socket.id});
     // socket.on("chatMessage", (text) => console.log(text))
